@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;   
+import java.net.Socket;
+
+//import exercise4.Server;   
 
 public class Server {
 	
@@ -51,7 +53,7 @@ public class Server {
 	public static void main (String [] args) throws IOException{
 		
 		Server myServer = new Server ();
-		
+		System.out.println("server is running....");
 		//Establishing the connection 
 		try {
 			myServer.aSocket = myServer.serverSocket.accept();
@@ -59,6 +61,12 @@ public class Server {
 			myServer.socketIn = new BufferedReader (new InputStreamReader(myServer.aSocket.getInputStream()));
 			myServer.socketOut = new PrintWriter (myServer.aSocket.getOutputStream(), true);
 			myServer.palindrome();
+			
+			
+			
+			myServer.socketIn.close();
+			myServer.socketOut.close();
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
