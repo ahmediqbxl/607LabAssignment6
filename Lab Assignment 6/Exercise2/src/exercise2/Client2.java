@@ -13,7 +13,13 @@ public class Client2 {
 	private Socket palinSocket;
 	private BufferedReader stdIn;
 	private BufferedReader socketIn;
-
+	
+	
+	/**
+	 * creates a client with the name if the server and a port number for the server
+	 * @param serverName
+	 * @param portNumber
+	 */
 	public Client2(String serverName, int portNumber) {
 		try {
 			palinSocket = new Socket(serverName, portNumber);
@@ -25,7 +31,12 @@ public class Client2 {
 			System.err.println(e.getStackTrace());
 		}
 	}
-
+	/**
+	 * communicate sends information to the server, prompts the user to make a choice
+	 * DATE
+	 * TIME
+	 * or QUIT
+	 */
 	public void communicate()  {
 
 		String line = "";
@@ -55,7 +66,11 @@ public class Client2 {
 		}
 
 	}
-
+	/**
+	 * creates a client object, calls communicate()
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException  {
 		Client2 aClient = new Client2("localhost", 9090);
 		aClient.communicate();
