@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import exercise2.Client2;
+
 //import exercise4.Client;
 
 public class Client {
@@ -56,7 +58,7 @@ public class Client {
 	}
 
 	public static void main(String[] args) throws IOException  {
-		Client aClient = new Client("localhost", 8099);
+		Client aClient = new Client("localhost", 5646);
 		aClient.communicate();
 	}
 }

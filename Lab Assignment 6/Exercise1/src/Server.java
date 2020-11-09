@@ -14,16 +14,21 @@ public class Server {
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
 	
-	
+	/**
+	 * creates a server with a port number
+	 */
 	public Server() {
 		try {
-			serverSocket = new ServerSocket (8099);
+			serverSocket = new ServerSocket (5646);
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
+	/**
+	 * checks if the input is a palindrome or not
+	 */
 	public void palindrome () {
 		String line = "";
 		String rev = "";
@@ -46,13 +51,18 @@ public class Server {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} //reading from the client		
+			}	
 		}	
 	}
-	
+	/**
+	 * main runs the server, connects with the client, receives words, checks palindrome and then sends back a response on 
+	 * Whether or not it was a palindorme
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main (String [] args) throws IOException{
 		
-		Server myServer = new Server ();
+		Server myServer = new Server();
 		System.out.println("server is running....");
 		//Establishing the connection 
 		try {
@@ -61,12 +71,10 @@ public class Server {
 			myServer.socketIn = new BufferedReader (new InputStreamReader(myServer.aSocket.getInputStream()));
 			myServer.socketOut = new PrintWriter (myServer.aSocket.getOutputStream(), true);
 			myServer.palindrome();
-			
-			
-			
+
 			myServer.socketIn.close();
 			myServer.socketOut.close();
-			
+			myServer.aSocket.close();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
