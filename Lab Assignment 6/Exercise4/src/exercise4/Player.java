@@ -1,4 +1,5 @@
 package exercise4;
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 
 
@@ -75,10 +76,10 @@ public class Player implements Constants{
     public void makeMove() throws IOException { // asks player to make a move by entering the row and column numbers
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("\nPlease enter the row between 0-2: ");
-        int row = Integer.parseInt(stdin.readLine());
+        int row = Integer.parseInt(BoundedLineReader.readLine(stdin, 5_000_000));
 
         System.out.print("\nPlease enter the col between 0-2: ");
-        int col = Integer.parseInt(stdin.readLine());
+        int col = Integer.parseInt(BoundedLineReader.readLine(stdin, 5_000_000));
 
         System.out.print("\nPlease enter either X or O: ");
         char mark = (char)stdin.read();

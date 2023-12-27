@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,7 +35,7 @@ public class Server {
 		String rev = "";
 		while (true) {
 			try {
-				line = socketIn.readLine();
+				line = BoundedLineReader.readLine(socketIn, 5_000_000);
 				if (line.equals(null)) {
 					line = "Please enter another word: !";
 					socketOut.println(line);
