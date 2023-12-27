@@ -1,5 +1,6 @@
 package exercise4;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
@@ -63,20 +64,20 @@ public class Game implements Runnable{ //had to remove implements constants in o
 			try {
 				
 				System.out.print("\nPlease enter the name of the \'X\' player: ");
-				String name= socketIn.readLine();
+				String name= BoundedLineReader.readLine(socketIn, 5_000_000);
 				while (name == null) {
 					System.out.print("Please try again: ");
-					name = socketIn.readLine();
+					name = BoundedLineReader.readLine(socketIn, 5_000_000);
 				}
 
 				Player xPlayer = new Player(name, LETTER_X);
 				xPlayer.setBoard(theGame.theBoard);
 				
 				System.out.print("\nPlease enter the name of the \'O\' player: ");
-				name = socketIn.readLine();
+				name = BoundedLineReader.readLine(socketIn, 5_000_000);
 				while (name == null) {
 					System.out.print("Please try again: ");
-					name = socketIn.readLine();
+					name = BoundedLineReader.readLine(socketIn, 5_000_000);
 				}
 				
 				Player oPlayer = new Player(name, LETTER_O);

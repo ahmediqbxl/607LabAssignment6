@@ -1,5 +1,6 @@
 package exercise2;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,7 +38,7 @@ public class DateServer {
 	public void getUserInput() throws IOException {
 		StringBuffer line = null;
 		while (true) {
-			line = new StringBuffer(socketInput.readLine());
+			line = new StringBuffer(BoundedLineReader.readLine(socketInput, 5_000_000));
 			if (line != null) {
 				if (line.toString().equals("QUIT")) {
 					break;

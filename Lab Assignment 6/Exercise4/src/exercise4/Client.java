@@ -1,4 +1,5 @@
 package exercise4;
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 
 import java.io.IOException;
@@ -34,9 +35,9 @@ public class Client {
 		while (running) {
 			try {
 				System.out.println("please enter a word: ");
-				line = stdIn.readLine();
+				line = BoundedLineReader.readLine(stdIn, 5_000_000);
 				if (!line.equals("QUIT")){
-					response = socketIn.readLine();
+					response = BoundedLineReader.readLine(socketIn, 5_000_000);
 					System.out.println(response);	
 				}else{
 					running = false;
